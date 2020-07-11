@@ -1,0 +1,121 @@
+﻿@model IEnumerable<HospitalAppTask.Models.Patient>
+
+@{
+    ViewData["Title"] = "قائمة المرضي";
+}
+
+
+    <div class="container-fluid">
+
+        <p class="right ">
+            <a asp-action="Create" class="btn btn-dark">اضافة مريض</a>
+        </p>
+        <table class="table table-bordered table-striped ">
+            <thead>
+                <tr>
+                    <th>
+                        رقم المريض
+                    </th>
+                    <th>
+                        الاسم بالللغة الانجليزية
+                    </th>
+                    <th>
+                        الاسم باللغة العربية
+                    </th>
+                    <th>
+                        النوع
+                    </th>
+
+                    <th>
+                        الجنسية
+                    </th>
+                    <th>
+                        نوع العلاج
+                    </th>
+                    <th>
+                        تليفون المنزل
+                    </th>
+                    <th>
+                        تليفون المحمول
+                    </th>
+
+                    <th>
+                        الطبيب المعالج
+                    </th>
+                    <th>
+                        تاريخ الدخول
+                    </th>
+                    <th>
+                        تاريخ الخروج
+                    </th>
+                    <th>
+                        التشخيص
+                    </th>
+                    <th>
+                        القسم
+                    </th>
+                    <th>
+                        الموظف المسؤل
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PatientId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NameEnglish)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NameArabic)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gender)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nationality.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KindOfPatient.Kind)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhoneHome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Doctor.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EntryDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CheckOut)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Diagnostic)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Department.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Employee.FullName)
+                    </td>
+
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.PatientId" class="btn btn-dark">تعديل</a>
+
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>

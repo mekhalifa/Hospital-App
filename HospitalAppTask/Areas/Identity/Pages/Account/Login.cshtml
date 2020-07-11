@@ -1,0 +1,49 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 text-right">
+                <section>
+                    <form id="account" method="post">
+                        <h4>تسجيل الدخول </h4>
+                        <hr />
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div>لتسجيل الدخول   <br /> - اسم المستخدم : <span class="text-danger">khalifa</span> , الباسورد : <span class="text-danger">12345@Mm</span> </div>
+                        <hr />
+                        <div class="form-group ">
+                            <label asp-for="Input.Username"> اسم المستخدم</label>
+                            <input asp-for="Input.Username" class="form-control" />
+                            <span asp-validation-for="Input.Username" class="text-danger"></span>
+                        </div>
+                        <div class="form-group ">
+                            <label asp-for="Input.Password"> الباسورد</label>
+                            <input asp-for="Input.Password" class="form-control" />
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label asp-for="Input.RememberMe">
+                                    <input asp-for="Input.RememberMe" />
+                                    تذكير الدخول
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-danger">دخــول</button>
+                        </div>
+
+                    </form>
+                </section>
+            </div>
+
+        </div>
+    </div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

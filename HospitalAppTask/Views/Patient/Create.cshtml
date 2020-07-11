@@ -1,0 +1,132 @@
+﻿@model HospitalAppTask.Models.Patient
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4 class="text-center">تسجيل مريض جديد</h4>
+<hr />
+<br />
+<div class="container">
+    <div class=" row">
+        <div class="col-md-9">
+            <form asp-action="Create" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group row">
+                    <label asp-for="NameEnglish" class="control-label ">الاسم باللغة الانجليزية</label>
+                    <input asp-for="NameEnglish" class="form-control" />
+                    <span asp-validation-for="NameEnglish" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="NameArabic" class="control-label">الاسم باللغة العربية</label>
+                    <input asp-for="NameArabic" class="form-control" />
+                    <span asp-validation-for="NameArabic" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Gender" class="control-label">النوع</label>
+                    <select asp-for="Gender" class="form-control">
+                        <option value="0">ذكر</option>
+                        <option value="1">انثي</option>
+                    </select>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="IdImgPath" class="control-label">صورة تحقيق الشخصية</label>
+                    <input asp-for="IdImgPath" class="form-control" type="file" />
+                    <span asp-validation-for="IdImgPath" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="NationalityId" class="control-label">الجنسية</label>
+                    <select asp-for="NationalityId" class="form-control" asp-items="ViewBag.NationalityId"></select>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="KindOfPatientId" class="control-label"> نوع العلاج</label>
+                    <select asp-for="KindOfPatientId" class="form-control" asp-items="ViewBag.KindOfPatientId"></select>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="PhoneHome" class="control-label"> تلفون المنزل</label>
+                    <input asp-for="PhoneHome" class="form-control" />
+                    <span asp-validation-for="PhoneHome" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Phone" class="control-label"> التلفون المحمول</label>
+                    <input asp-for="Phone" class="form-control" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+
+                <div class="form-group row">
+                    <label asp-for="DoctorId" class="control-label">اسم الطبيب</label>
+                    <select asp-for="DoctorId" class="form-control" asp-items="ViewBag.DoctorId"></select>
+                </div>
+                @*<div class="form-group row">
+                    <label asp-for="EntryDate" class="control-label">تاريخ الدخول</label>
+                    <input asp-for="EntryDate" class="form-control" />
+                    <span asp-validation-for="EntryDate" class="text-danger"></span>
+                </div>*@
+                @*<div class="form-group row">
+                    <label asp-for="CheckOut" class="control-label">تاريخ الخروج</label>
+                    <input asp-for="CheckOut" class="form-control" />
+                    <span asp-validation-for="CheckOut" class="text-danger"></span>
+                </div>*@
+                <div class="form-group row">
+                    <label asp-for="Diagnostic" class="control-label"> التشخيص</label>
+                    <input asp-for="Diagnostic" class="form-control" />
+                    <span asp-validation-for="Diagnostic" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="DepartmentId" class="control-label">القسم</label>
+                    <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.DepartmentId"></select>
+                </div>
+
+
+                @*<div class="form-group form-check-inline float-right" style="margin:0px">
+                    <label class="form-check-label">
+                        <input class="form-check-input" name="checkbox-toggle" type="checkbox" /> يوجد تاريخ مرضي
+                    </label>
+                </div>*@
+
+                <div class="custom-control custom-switch float-right" style="margin:0px">
+                    <input type="checkbox" class="custom-control-input checkbox-toggle" id="customSwitches" >
+                    <label class="custom-control-label" for="customSwitches">يوجد تاريخ مرضي</label>
+                </div>
+
+                <br /><br /><br />
+                <div id="element" style="display:none">
+                    @{await Html.RenderPartialAsync("_CDisease"); }
+                </div>
+
+
+                <br />
+
+                <div class="form-group">
+                    <input type="submit" value="إضافة مريض" class="btn btn-danger" />
+                    <a asp-action="Index" class="btn btn-dark">الرجوع لقائمة المرضي</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div>
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+<script>
+    $(function () {
+
+        $('.checkbox-toggle').on('change', function () {
+            if (this.checked) {
+
+                $('#element').show()
+            }
+            else
+                $("#element").hide();
+        });
+
+
+    });
+    
+</script>
+}

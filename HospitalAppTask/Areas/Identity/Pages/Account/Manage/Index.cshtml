@@ -1,0 +1,56 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Profile";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+}
+
+    <div class="container">
+       
+
+        <div class="row text-right">
+            <div class="col-md-6">
+                <form id="profile-form" method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="Input.UserName">اسم المستخدم</label>
+                        <input asp-for="Input.UserName" class="form-control" />
+                        <span asp-validation-for="Input.UserName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.PhoneNumber">التليفون</label>
+                        <input asp-for="Input.PhoneNumber" class="form-control" />
+                        <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.Email">الايميل</label>
+                        <input asp-for="Input.Email" class="form-control" />
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.FullName">الاسم كامل</label>
+                        <input asp-for="Input.FullName" class="form-control" />
+                        <span asp-validation-for="Input.FullName" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label asp-for="Input.KindOfEmployeeId">نوع الموظف</label>
+                        <select asp-for="Input.KindOfEmployeeId" class="form-control">
+                            <option value="100">أ - مختص بـ " مرضى نفقة التامين ونفقة الدوله فقط "</option>
+                            <option value="200">ب - مختص بـ " المرضى المجاني      "</option>
+                            <option value="300">ج - مختص بـ " مرضى علاج بأجر      "</option>
+                            <option value="400">د - مختص بـ " كل المرضى  "</option>
+                        </select>
+                        <span asp-validation-for="Input.KindOfEmployeeId" class="text-danger"></span>
+                    </div>
+                    <button id="update-profile-button" type="submit" class="btn btn-danger">حفظ</button>
+                </form>
+                <partial name="_StatusMessage" model="Model.StatusMessage" />
+            </div>
+        </div>
+    </div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

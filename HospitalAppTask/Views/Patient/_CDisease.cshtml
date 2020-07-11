@@ -1,0 +1,38 @@
+﻿@model HospitalAppTask.Models.Disease
+
+
+
+    <div class=" cd row">
+        <div asp-action="CDisease" class="form-inline row">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group form-inline">
+                <label asp-for="KindOfDisease" class="control-label cd"> نوع المرض </label>
+                <input asp-for="KindOfDisease" class="form-control" />
+                <span asp-validation-for="KindOfDisease" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check-inline">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Chronic" /> مزمن
+                </label>
+            </div>
+            <div class="form-group form-check-inline">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Legacy" /> وراثي
+                </label>
+            </div>
+            <div class="form-group form-check-inline cd">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="CauseInfection" /> يسبب العدوي
+                </label>
+            </div>
+            @*<div class="form-group">
+                <input type="submit" value="أضف" class="btn btn-primary" />
+            </div>*@
+        </div>
+    </div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
